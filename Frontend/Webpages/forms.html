@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="form.css">
+    <title>Integrated Form</title>
+</head>
+<body style="background: url('bg.jpeg') no-repeat center center fixed; background-size: cover;">
+    <header>
+        <nav>
+          <div class="left">Binod Grocery Store</div>
+          <div>
+            <ul>
+                <li><a href="welcome.html">Home</a></li>
+                <li><a href="index.html">Order History</a></li>
+                <li><a href="order.html">Order</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="chatbot.html" target="_blank">Chatbot</a></li>
+                
+            </ul>
+          </div>
+        </nav>
+      </header>
+   
+    
+
+    <div class="container">
+        <form form action="https://formspree.io/f/xkndzrqg" method="post" target="blank">
+            <h1 class="main-heading">PAYMENT DETAILS</h1>
+            <hr>
+            <h3 class="sub-heading">Customer Information</h3>
+            <p>Name: <input type="text" required name="name" placeholder="Bob Biswas"></p>
+            <fieldset>
+                <legend>Gender</legend>
+                <p>Male <input type="radio" name="gender" id="1" required>
+                    Female <input type="radio" name="gender" id="2" required>
+                    Others <input type="radio" name="gender" id="3" required></p>
+            </fieldset>
+            <p>Address: <textarea name="address" id="4" cols="100" rows="4" placeholder="Enter your address"></textarea></p>
+            <p>Country: <input type="text" name="country" placeholder="India"></p>
+            <p>Email: <input type="email" name="email" id="5" required placeholder="email@xyz.com"></p>
+            <p>Pincode: <input type="number" name="pincode" id="pincode" required placeholder="700010"></p>
+            <hr>
+            <div class="container">
+        
+              <!-- Your content for the forms page goes here -->
+              <h4><p>Total Price to Pay: <span id="totalPrice"></span> Rs</p></h4>
+          </div>
+            <h3 class="sub-heading">Payment Information</h3>
+            <p>Payment Method:
+                <select name="payment_method" id="payment_method" required>
+                    <option value="card">Card</option>
+                    <option value="qr_code">QR Code</option>
+                </select>
+            </p>
+
+            <!-- Card Payment Fields -->
+            <div id="cardPaymentFields">
+                <p>Card type: <select name="card_type" id="card_type" >
+                        <option value="">--Select your card type--</option>
+                        <option value="Visa">Visa</option>
+                        <option value="Mastercard">Mastercard</option>
+                        <option value="RuPay">Rupay</option>
+                    </select></p>
+                <p>Card Number: <input type="number" name="cno" id="cno"  placeholder="123456789"></p>
+                <p>Card Expiration Date: <input type="date" name="date" id="date" ></p>
+                <p>CVV: <input type="password" name="cvv" id="cvv"  placeholder="123"></p>
+            </div>
+
+            <!-- QR Code Payment Fields -->
+            <div id="qrCodePaymentFields" style="display: none;">
+                <p>Scan the QR Code to make the payment.</p>
+                <!-- Replace the src attribute with the actual QR code image URL -->
+                <img src="qr.jpeg" alt="QR Code" style="width: 500px">
+            </div>
+
+            <input type="submit" value="Pay Now">
+            <hr><br><br>
+        </form>
+    </div>
+
+    <script>
+        // Retrieve total price from localStorage
+        var totalPrice = localStorage.getItem('total_price');
+
+        // Display total price on the page
+        document.getElementById('totalPrice').textContent = totalPrice;
+
+        // Toggle display of payment fields based on the selected payment method
+        document.getElementById('payment_method').addEventListener('change', function () {
+            var cardPaymentFields = document.getElementById('cardPaymentFields');
+            var qrCodePaymentFields = document.getElementById('qrCodePaymentFields');
+
+            if (this.value === 'card') {
+                cardPaymentFields.style.display = 'block';
+                qrCodePaymentFields.style.display = 'none';
+            } else if (this.value === 'qr_code') {
+                cardPaymentFields.style.display = 'none';
+                qrCodePaymentFields.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="welcome.css">
+    <title>Welcome</title>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-container">
+            <img src="logo.png" alt="Binod Grocery Store Logo">
+            <h2>Welcome to Binod Grocery Store</h2>
+        </div>
+
+        <div>
+          
+          <h3 ><span id="element"></span></h3>
+      </div>
+        <div class="container-details">
+            <div class="details">
+                <h2>Welcome!</h2>
+                <div class="paragraph-container"> 
+                <p>Hey Developer !!! You have successfully logged in. You can access everything here.</p>
+             
+                </div>
+            </div>
+            <div class="links">
+              <a href="index.html">📃</a>
+                <a href="manage-product.html">⚙️</a>
+                
+                
+                <a href="order.html">🛒</a>
+                <a href="forms.html">💳</a>
+                <a href="feedback.html">✰</a>
+                <a href="chatbot.html" target="_blank">🤖</a>
+            </div>
+        </div>
+        
+    </div>
+</body>
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+<script>
+  function runTypedLoop() {
+    var typed = new Typed('#element', {
+      strings: ['This is a Developer Side Web Page...'],
+      typeSpeed: 120,
+      onComplete: function() {
+        typed.destroy();
+        runTypedLoop();
+      },
+    });
+  }
+  runTypedLoop();
+</script>
+</html>

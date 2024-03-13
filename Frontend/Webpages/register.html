@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binod Grocery Store - Register</title>
+    <!-- Add your stylesheets and other meta tags here -->
+    <style>
+ 
+ .password-container {
+    position: relative;
+    display: inline-block;
+}
+#togglePassword {
+    position: absolute;
+    top: 38%;
+    right: -65px;
+    transform: translateY(-50%);
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button {
+    display: block;
+    margin-top: 10px; /* Adjust the margin as needed */
+}
+          
+        </style>
+    <link rel="stylesheet" href="loginstyle.css">
+
+</head>
+<body>
+    
+  <div class="container">
+    <div class="logo-container">
+        <img src="logo.png" alt="Binod Grocery Store Logo">
+    </div>
+    </div><br><br>
+
+    <h2>Register</h2>
+
+    <form id="registerForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+       
+        <div class="password-container">
+          <input type="password" id="password" name="password" required>
+          <button type="button" id="togglePassword" onclick="togglePasswordVisibility()">Show</button>
+      </div>
+
+        <button type="button" onclick="register()">Register</button>
+    </form>
+
+    <p id="registerStatus"></p>
+
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+
+    <!-- Add your scripts and other resources here -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          var passwordInput = document.getElementById('password');
+          var toggleButton = document.getElementById('togglePassword');
+  
+          toggleButton.addEventListener('click', function () {
+              if (passwordInput.type === 'password') {
+                  passwordInput.type = 'text';
+                  toggleButton.textContent = 'Hide';
+              } else {
+                  passwordInput.type = 'password';
+                  toggleButton.textContent = 'Show';
+              }
+          });
+      });
+  </script>
+    <script src="jquery.min.js"></script>
+    <script src="common.js"></script>
+    <script src="register.js"></script>
+</body>
+</html>

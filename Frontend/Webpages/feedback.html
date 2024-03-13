@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="feedback.css">
+    <title>Customer Feedback</title>
+</head>
+<body style="background: url('bg.jpeg') no-repeat center center fixed; background-size: cover;">
+  
+  <header>
+    <nav>
+      <div class="left">Binod Grocery Store</div>
+      <div>
+        <ul>
+          <li><a href="welcome.html">Home</a></li>
+          <li><a href="index.html">Order History</a></li>
+          <li><a href="order.html">Order</a></li>
+          <li><a href="forms.html">Payment</a></li>
+          <li><a href="chatbot.html" target="_blank">Chatbot</a></li>
+          
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <div class="firstSection">
+    <div class="leftsection">
+      <br><div class="formdiv">
+      <h3 class="sub-heading">Give Your Feedback</h3>
+      
+      <div class="containerfeed">
+      <div class="star_rating">
+        <button class="star">&#9734;</button>
+        <button class="star">&#9734;</button>
+        <button class="star">&#9734;</button>
+        <button class="star">&#9734;</button>
+        <button class="star">&#9734;</button>
+      </div><br>
+    </div>
+
+      <form action="https://formspree.io/f/xqkorwpa" method="post">
+        <p>Name:<br><br> <input type="text" name="name" placeholder="John Doe"></p><br>
+        <p>Pen Your Experience:<br><br> <textarea name="experience" id="4" cols="100" class="add" rows="10" placeholder="Your feedback here"></textarea></p><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    </div>
+  </div>
+
+
+  <script>
+    const allStar = document.querySelectorAll('.star');
+    let current_rating = document.querySelector('.add');
+    allStar.forEach((star, i) => {
+      star.onclick = function() {
+        let current_star_level = i + 1;
+        current_rating.innerText = `${current_star_level} star :\n `;
+
+        allStar.forEach((star, j) => {
+          if (current_star_level >= j + 1) {
+            star.innerHTML = '&#9733';
+          } else {
+            star.innerHTML = '&#9734';
+          }
+        });
+      };
+    });
+  </script>
+  
+</body>
+</html>
