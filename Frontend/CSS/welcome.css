@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif; /* Use your preferred font */
+  background-color: #001f09; /* Adjust background color as needed */
+  color: #fff; /* Text color */
+  background-image: url('welcomebg.jpg'); /* Separate properties with a semicolon */
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  
+}
+#element span{
+  color:pink;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo-container img {
+  width: 500px; /* Adjust the logo width as needed */
+}
+
+.container-details {
+  text-align: center;
+}
+
+.details h2 {
+  font-size: 32px; /* Heading font size */
+}
+
+.details p {
+  font-size: 18px; /* Paragraph font size */
+  margin-bottom: 20px;
+}
+
+.links a {
+  display: inline-block;
+  margin: 0 10px;
+  text-decoration: none;
+  color: #fffb04;
+  font-size: 50px; /* Link font size */
+ 
+  transition: border-color 0.3s ease-in-out;
+}
+.links a:hover {
+  text-decoration: none;
+  color: lightslategray;
+  font-size: 3.5rem;
+}
+
+.links a:hover {
+  border-color: #fff; /* Border color on hover */
+}
+.developer-link a {
+  color:yellow;
+  
+}
+.developer-link a:hover {
+  text-decoration: none;
+  color: rgb(230, 161, 14);
+  font-size: 1.2rem;
+}
+#element{
+  color:rgb(140, 5, 230);
+}
+.paragraph-container {
+  background-color:  #272727;
+  margin: 50px 50px;
+  padding: 20px;
+  border-radius: 10px;
+}
+  
+
