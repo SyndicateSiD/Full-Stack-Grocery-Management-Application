@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Recommender</title>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            
+        }
+        nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 80px;
+  background-color: rgb(34, 92, 0);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+}
+
+nav ul li {
+  list-style: none;
+  margin: 0 23px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: white;
+}
+
+nav ul li a:hover {
+  text-decoration: none;
+  color: lightslategray;
+  font-size: 1.1rem;
+}
+ /* Media query for screens less than 700px */
+ @media (max-width: 700px) {
+      nav {
+        flex-direction: column;
+        height: auto;
+      }
+      .left {
+        margin-bottom: 10px;
+      }
+      nav ul {
+        flex-direction: column;
+      }
+      nav ul li {
+        margin: 5px 0;
+      }
+    }
+    .left {
+          color: white; /* Set text color to white */
+          font-size: 1.5rem; /* Increase font size */
+      }
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #recommendationSpace {
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body body style="background: url('recobg.jpg') no-repeat center center fixed; background-size: cover;">
+    <header>
+        <nav>
+          <div class="left">Binod Grocery Store</div>
+          <div>
+            <ul>
+              <li><a href="welcome.html">Home</a></li>
+              <li><a href="index.html">Order History</a></li>
+              <li><a href="order.html">Order</a></li>
+              <li><a href="forms.html">Payment</a></li>
+              <li><a href="feedback.html">Feedback</a></li>
+              
+              <li><a href="chatbot.html" target="_blank">Chatbot</a></li>
+              
+            </ul>
+          </div>
+        </nav>
+      </header>
+    <div class="container">
+        <h1>Food Recommender</h1>
+
+        <!-- Form for Receiving Ingredients to Recommend Food -->
+        <form id="recommendationForm">
+            <input type="text" name="ingredients" id="ingredients" placeholder="Enter Ingredients (comma-separated)" required>
+            <button type="submit">Recommend</button>
+        </form>
+
+        <!-- Space for Displaying Recommended Food -->
+        <div id="recommendationSpace"></div>
+
+        <script>
+            document.getElementById("recommendationForm").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                // Get the ingredients input value
+                var ingredients = document.getElementById("ingredients").value;
+
+                // Create a new XMLHttpRequest object
+                var xhr = new XMLHttpRequest();
+
+                // Define the POST request endpoint
+                xhr.open("POST", "http://127.0.0.1:5000/predict");
+
+                // Set the Content-Type header
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                // Define the callback function when the request is completed
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        // Parse the response JSON data
+                        var data = JSON.parse(xhr.responseText);
+
+                        // Display the recommendation in the HTML
+                        var recommendationSpace = document.getElementById("recommendationSpace");
+                        recommendationSpace.innerHTML = "<h2>Recommended Food:</h2><ul>";
+                        for (var i = 0; i < data.length; i++) {
+                            recommendationSpace.innerHTML += "<li>" + data[i] + "</li>";
+                        }
+                        recommendationSpace.innerHTML += "</ul>";
+                    } else {
+                        console.error('Request failed. Returned status of ' + xhr.status);
+                    }
+                };
+
+                // Send the POST request with the ingredients data
+                xhr.send("ingredients=" + encodeURIComponent(ingredients));
+            });
+        </script>
+    </div>
+</body>
+</html>
