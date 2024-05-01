@@ -1,7 +1,7 @@
 # Full-Stack-Grocery-Management-Application
 
 ## Features
-1. ER DIAGRAM
+1. Logical level 
    
    ![er drawio (1)](https://github.com/Subhranil2152/Full-Stack-Grocery-Management-Application/assets/97818707/d2383bb3-929f-4f2d-b6c1-72474b9cd11a)
 
